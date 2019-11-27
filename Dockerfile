@@ -2,11 +2,11 @@ FROM continuumio/miniconda3
 
 RUN apt update && apt install -y procps make gcc && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN conda config --add channels defaults && \
+RUN conda config --add channels conda-forge && \
     conda config --add channels bioconda && \
-    conda config --add channels conda-forge
+    conda config --add channels default
 
-RUN conda install virsorter
+RUN conda install virsorter=1.0.5
 
 # RUN conda install -c bioconda mcl=14.137 muscle=3.8.31-0 blast perl-bioperl perl-file-which \
 #     hmmer=3.1b2 perl-parallel-forkmanager perl-list-moreutils diamond=0.9.14 && conda clean -a
